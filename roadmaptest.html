@@ -37,7 +37,9 @@ function initMap() {
   // NOTE: This uses cross-domain XHR, and may not work on older browsers.
 
 
-map.data.loadGeoJson('https://andys6190.github.io/roads/geotest.geojson');
+var incomeData = 'https://andys6190.github.io/roads/syracuse_census_tracts_with_poverty_data.geojson'; 
+var roadData = 'https://andys6190.github.io/roads/geotest.geojson' ; 
+map.data.loadGeoJson(incomeData);
 //map.data.setGeoJson('https://andys6190.github.io/roads/geotest.geojson');
 //map.data.addGeoJson(mapData);
 var featureStyle = {
