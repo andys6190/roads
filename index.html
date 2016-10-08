@@ -7,78 +7,118 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<style>
-.container {
- margin-bottom: 0px;
-}
-.jumbotron {
-background-image: url("roads.jpeg");
-background-size: cover;}
-</style>
+  <style>
+    .container {
+     margin-bottom: 0px;
+     width:100%;"
+   }
+   .jumbotron {
+
+     height: 400px;
+     color: white;
+     text-shadow: #444 0 1px 1px;
+     background:transparent;}
+     .bg {
+      background: url('roads.jpeg') no-repeat center center;
+      position: fixed;
+      width: 110%;
+      height: 500px; 
+      top:0;
+      left:0;
+      z-index: -1;
+    }
+  </style>
+
+  <style>
+    var jumboHeight = $('.jumbotron').outerHeight();
+    function parallax(){
+      var scrolled = $(window).scrollTop();
+      $('.bg').css('height', (jumboHeight-scrolled) + 'px');
+    }
+
+    $(window).scroll(function(e){
+      parallax();
+    });
+  </style>
 </head>
 <body>
-   <nav class="navbar navbar-inverse" style="margin-bottom:0px;">
+ <nav class="navbar navbar-inverse navbar-fixed-top" style="margin-bottom:0px;">
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="#">Team Name</a>
     </div>
-      <ul class="nav navbar-nav navbar-right">
+    <ul class="nav navbar-nav navbar-right">
       <li class="active"><a href="#">Home</a></li>
-      <li><a href="#">Page 1</a></li>
+      <li><a href="#">About</a></li>
       <li><a href="#">Page 2</a></li> 
       <li><a href="#">Page 3</a></li> 
     </ul>
   </div>
 </nav>
+
+<div class="bg"></div>
 <div class="jumbotron text-center" style="margin-bottom:0px;">
-  <h1 style="color:white;">Generic Bootstrap Page</h1>
-  <p>Words here!</p>
+<h1 style="color:white; margin-top: 100px;">Generic Bootstrap Page</h1>
+  <p style="color:white;">Words here!</p>
 </div>
-  
-<div class="container" style="height:500px";>
+
+<div class="container" style="height:500px; background-color: white;">
  <center>
- <h1>
- Main map content here
- </h1>
+   <h1>
+     Main Stuff
+   </h1>
+
+
+ </center>
+</div>
+
+
+<div class="container" style="height:500px; background-color:#C0D890;">
+ <center>
+   <h1 style="color:white;">
+     About
+   </h1>
+
+
  </center>
 </div>
 
 </div>
-  <div class="container" style="background-color: #F2F2F2; width:100%;" >
-    <div class="row">
-      <center><h1>Meet the Team</h1></center>
-      <div class="col-sm-3">
-        <center>
+<div class="container" style="background-color: #F2F2F2;" >
+  <div class="row">
+    <center><h1>The Team</h1></center>
+    <div class="col-sm-3">
+      <center>
 
-          <img src="Placeholder.png" height ="175px" width="175px" style="margin-top: 15px;">
-          <h3> Person 1 </h3>
+        <img src="Placeholder.png" height ="175px" width="175px" style="margin-top: 15px;">
+        <h3> Person 1 </h3>
 
-        </center>
+      </center>
 
-      </div>
-      <div class="col-sm-3"> 
-        <center>
-          <img src="Placeholder.png" height ="175px" width="175px" style="margin-top: 15px;">
-          <h3> Person 2 </h3>
-        </center>
+    </div>
+    <div class="col-sm-3"> 
+      <center>
+        <img src="Placeholder.png" height ="175px" width="175px" style="margin-top: 15px;">
+        <h3> Person 2 </h3>
+      </center>
 
-      </div>
-      <div class="col-sm-3"> 
-        <center>
-          <img src="Placeholder.png" height ="175px" width="175px" style="margin-top: 15px;">
-          <h3> Person 3 </h3>
-        </center>
-      </div>
-         <div class="col-sm-3"> 
-        <center>
-          <img src="Placeholder.png" height ="175px" width="175px" style="margin-top: 15px;">
-          <h3> Person 4 </h3>
-        </center>
-      </div>
-      <br><br>
+    </div>
+    <div class="col-sm-3"> 
+      <center>
+        <img src="Placeholder.png" height ="175px" width="175px" style="margin-top: 15px;">
+        <h3> Person 3 </h3>
+      </center>
+    </div>
+    <div class="col-sm-3"> 
+      <center>
+        <img src="Placeholder.png" height ="175px" width="175px" style="margin-top: 15px;">
+        <h3> Person 4 </h3>
+      </center>
     </div>
     <br><br>
   </div>
+  <br><br>
+</div>
 </body>
 </html>
 
