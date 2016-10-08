@@ -7,6 +7,8 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCM6tj7ueoIAupba0D-8aTrukUjwEBzqhQ&callback=initMap"
+        async defer></script>
   <style>
     .container {
      margin-bottom: 0px;
@@ -29,72 +31,94 @@
       
     }
 
-  #section1 {padding-top:50px;height:500px;}
-  #section2 {padding-top:50px;height:500px;}
-  #section3 {padding-top:50px;height:500px;}
-  </style>
+    #section1 {padding-top:50px;height:500px;}
+    #section2 {padding-top:50px;height:500px;}
+    #section3 {padding-top:50px;height:500px;}
 
-  <style>
-    var jumboHeight = $('.jumbotron').outerHeight();
-    function parallax(){
-      var scrolled = $(window).scrollTop();
-      $('.bg').css('height', (jumboHeight-scrolled) + 'px');
-    }
-
-    $(window).scroll(function(e){
-      parallax();
-    });
+     #map {
+        height: 100%;
+      }
+      
+      .testClass{
+  stroke:black;
+  stroke-width:4;
+  fill:black;
+}
   </style>
+<script>
+var map;
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 14,
+    center: {lat: 43.079709181516954,  lng:  -76.139201824620429}
+  });
+  // NOTE: This uses cross-domain XHR, and may not work on older browsers.
+var incomeData = 'https://andys6190.github.io/roads/syracuse_census_tracts_with_poverty_data.geojson'; 
+var roadData = 'https://andys6190.github.io/roads/geotest.geojson' ; 
+map.data.loadGeoJson(incomeData);
+//map.data.setGeoJson('https://andys6190.github.io/roads/geotest.geojson');
+//map.data.addGeoJson(mapData);
+var featureStyle = {
+    strokeColor: '#ff3333',
+    strokeWeight: 4
+}
+map.data.setStyle(featureStyle);
+  
+}
+
+
+</script>
+  
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
-<nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container-fluid">
-    <div class="navbar-header">
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">Team Name</a>
-    </div>
-    <div>
-      <div class="collapse navbar-collapse" id="myNavbar">
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="#section1">Section 1</a></li>
-          <li><a href="#section2">Section 2</a></li>
-          <li><a href="#section3">Section 3</a></li>
-        </ul>
+        </button>
+        <a class="navbar-brand" href="#">Team Name</a>
+      </div>
+      <div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#section1">Section 1</a></li>
+            <li><a href="#section2">Section 2</a></li>
+            <li><a href="#section3">Section 3</a></li>
+          </ul>
+        </div>
       </div>
     </div>
+  </nav>
+
+  <div id="section1" class="bg"></div>
+  <div class="jumbotron text-center" style="margin-bottom:0px;">
+    <h1 style="color:white; margin-top: 100px;">Generic Bootstrap Page</h1>
+    <p style="color:white;">Words here!</p>
   </div>
-</nav>
 
-<div id="section1" class="bg"></div>
-<div class="jumbotron text-center" style="margin-bottom:0px;">
-<h1 style="color:white; margin-top: 100px;">Generic Bootstrap Page</h1>
-  <p style="color:white;">Words here!</p>
-</div>
+  <div class="container" style="height:500px; background-color: white;">
+   <center>
+     <h1>
+       Main Map Here!
+     </h1>
+<div id="map"></div>
 
-<div class="container" style="height:500px; background-color: white;">
- <center>
-   <h1>
-     Main Map Here!
-   </h1>
+   </center>
+ </div>
 
 
- </center>
-</div>
+ <div id="section2" class="container" style="height:500px; background-color:#C0D890;">
+   <center>
+     <h1 style="color:white;">
+       About
+     </h1>
 
 
-<div id="section2" class="container" style="height:500px; background-color:#C0D890;">
- <center>
-   <h1 style="color:white;">
-     About
-   </h1>
-
-
- </center>
-</div>
+   </center>
+ </div>
 
 </div>
 <div id="section3" class="container" style="background-color: #F2F2F2;" >
