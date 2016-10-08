@@ -26,7 +26,12 @@
       top:0;
       left:0;
       z-index: -1;
+      
     }
+
+  #section1 {padding-top:50px;height:500px;}
+  #section2 {padding-top:50px;height:500px;}
+  #section3 {padding-top:50px;height:500px;}
   </style>
 
   <style>
@@ -41,22 +46,30 @@
     });
   </style>
 </head>
-<body>
- <nav class="navbar navbar-inverse navbar-fixed-top" style="margin-bottom:0px;">
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+<nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+      </button>
       <a class="navbar-brand" href="#">Team Name</a>
     </div>
-    <ul class="nav navbar-nav navbar-right">
-      <li class="active"><a href="#">Home</a></li>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Page 2</a></li> 
-      <li><a href="#">Page 3</a></li> 
-    </ul>
+    <div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#section1">Section 1</a></li>
+          <li><a href="#section2">Section 2</a></li>
+          <li><a href="#section3">Section 3</a></li>
+        </ul>
+      </div>
+    </div>
   </div>
 </nav>
 
-<div class="bg"></div>
+<div id="section1" class="bg"></div>
 <div class="jumbotron text-center" style="margin-bottom:0px;">
 <h1 style="color:white; margin-top: 100px;">Generic Bootstrap Page</h1>
   <p style="color:white;">Words here!</p>
@@ -65,7 +78,7 @@
 <div class="container" style="height:500px; background-color: white;">
  <center>
    <h1>
-     Main Stuff
+     Main Map Here!
    </h1>
 
 
@@ -73,7 +86,7 @@
 </div>
 
 
-<div class="container" style="height:500px; background-color:#C0D890;">
+<div id="section2" class="container" style="height:500px; background-color:#C0D890;">
  <center>
    <h1 style="color:white;">
      About
@@ -84,7 +97,7 @@
 </div>
 
 </div>
-<div class="container" style="background-color: #F2F2F2;" >
+<div id="section3" class="container" style="background-color: #F2F2F2;" >
   <div class="row">
     <center><h1>The Team</h1></center>
     <div class="col-sm-3">
