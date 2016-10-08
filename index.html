@@ -1,102 +1,84 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Google Map</title>
-    <meta name="viewport" content="initial-scale=1.0">
-    <meta charset="utf-8">
-    <style>
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-      #map {
-        height: 100%;
-      }
-      
-      .testClass{
-  stroke:black;
-  stroke-width:4;
-  fill:black;
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+.container {
+ margin-bottom: 0px;
 }
-      
-    </style>
-  </head>
-  <body>
-    <div id="map"></div>
-    <script>
-/*
-var map;
-function initMap() {
-  map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: -34.397, lng: 150.644},
-    zoom: 8
-  });
-} */
+.jumbotron {
+background-image: url("roads.jpeg");
+background-size: cover;}
+</style>
+</head>
+<body>
+   <nav class="navbar navbar-inverse" style="margin-bottom:0px;">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Team Name</a>
+    </div>
+      <ul class="nav navbar-nav navbar-right">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="#">Page 1</a></li>
+      <li><a href="#">Page 2</a></li> 
+      <li><a href="#">Page 3</a></li> 
+    </ul>
+  </div>
+</nav>
+<div class="jumbotron text-center" style="margin-bottom:0px;">
+  <h1 style="color:white;">Generic Bootstrap Page</h1>
+  <p>Words here!</p>
+</div>
+  
+<div class="container" style="height:500px";>
+ <center>
+ <h1>
+ Main map content here
+ </h1>
+ </center>
+</div>
 
-var map;
-function initMap() {
-  map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 14,
-    center: {lat: 43.079709181516954,  lng:  -76.139201824620429}
-  });
+</div>
+  <div class="container" style="background-color: #F2F2F2; width:100%;" >
+    <div class="row">
+      <center><h1>Meet the Team</h1></center>
+      <div class="col-sm-3">
+        <center>
 
-  // NOTE: This uses cross-domain XHR, and may not work on older browsers.
+          <img src="Placeholder.png" height ="175px" width="175px" style="margin-top: 15px;">
+          <h3> Person 1 </h3>
 
+        </center>
 
-map.data.loadGeoJson('https://andys6190.github.io/roads/geotest.geojson');
-//map.data.setGeoJson('https://andys6190.github.io/roads/geotest.geojson');
-//map.data.addGeoJson(mapData);
-var featureStyle = {
-    strokeColor: '#ff3333',
-    strokeWeight: 4
-}
+      </div>
+      <div class="col-sm-3"> 
+        <center>
+          <img src="Placeholder.png" height ="175px" width="175px" style="margin-top: 15px;">
+          <h3> Person 2 </h3>
+        </center>
 
-map.data.setStyle(featureStyle);
-}
-    /*
-    function initMap() {
-    var locations = [
-	<?php
-		$result = mysqli_query( $link , $query );
-		
-		while($row = mysqli_fetch_array($result)) {
-			echo "['".$row['Address']."' ,  ".$row['Lat']."   ,  ".$row['Lon']."  ] ,  ";
-		}
-	?>
-     
-    ];
-	var bounds = new google.maps.LatLngBounds();
-    var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 15,
-      center: new google.maps.LatLng(41.923, 12.513), 
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    });
-
-    var infowindow = new google.maps.InfoWindow();
-
-    var marker, i;
-
-    for (i = 0; i < locations.length; i++) {  
-      marker = new google.maps.Marker({
-        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-        map: map
-      });
-		 bounds.extend(marker.position);
-      google.maps.event.addListener(marker, 'click', (function(marker, i) {
-        return function() {
-          infowindow.setContent(locations[i][0]);
-          infowindow.open(map, marker);
-        }
-      })(marker, i));
-    }
-	map.fitBounds(bounds);
-      }
-*/ 
-
-
-    </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCM6tj7ueoIAupba0D-8aTrukUjwEBzqhQ&callback=initMap"
-        async defer></script>
-  </body>
+      </div>
+      <div class="col-sm-3"> 
+        <center>
+          <img src="Placeholder.png" height ="175px" width="175px" style="margin-top: 15px;">
+          <h3> Person 3 </h3>
+        </center>
+      </div>
+         <div class="col-sm-3"> 
+        <center>
+          <img src="Placeholder.png" height ="175px" width="175px" style="margin-top: 15px;">
+          <h3> Person 4 </h3>
+        </center>
+      </div>
+      <br><br>
+    </div>
+    <br><br>
+  </div>
+</body>
 </html>
+
