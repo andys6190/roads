@@ -1,6 +1,5 @@
 var app = (function() {
     var map = null;
-    var mapData = null;
     var roadColors = [
         '#FF0000',
         '#FF3300',
@@ -37,6 +36,7 @@ var app = (function() {
         });
         setMapJSON(incomeData);
         setMapJSON(roadData + filters.year + '.json');
+        bind();
     }
 
     function bind() {
@@ -59,13 +59,39 @@ var app = (function() {
       fetch(source).then(function(ret) {
         return ret.json();
       }).then(function(json) {
-        mapData = json;
-        map.data.addGeoJson(mapData);
-        setDisplayProperty(filters.property);
+        map.data.addGeoJson(json);
+        setInitialDisplay()
       });
 
     }
-    function setDisplayProperty(property) {
+
+    function updateFilters() {
+        map.data.setStyle(function(feature) {
+            if (feature.getProperty('percent_in_poverty')) {
+                return;
+            }
+
+            var overall = feature.getProperty('overall');
+
+            if (!overall) {
+                return {
+                    strokeWeight: 0
+                };
+            }
+
+            overall = Math.floor(relevantProperty / 2);
+
+            if (filters.quality.indexOf(overall) === -1) {
+                return {
+                    strokeWeight: 0
+                };
+            }
+
+            return;
+        });
+    }
+
+    function setInitialDisplay() {
         map.data.setStyle(function(feature) {
           console.log("income data : " + feature.getProperty('percent_in_poverty'));
             if (feature.getProperty('percent_in_poverty')) {
@@ -101,7 +127,7 @@ var app = (function() {
                 };
             }
 
-            var relevantProperty = feature.getProperty(property);
+            var relevantProperty = feature.getProperty('overall');
 
             if (!relevantProperty) {
                 return {
