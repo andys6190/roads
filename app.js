@@ -53,7 +53,7 @@ var app = (function() {
 
     function bind() {
         $('.yearselect').click(function(e){
-            var year = e.target.value;
+            selectedYear = e.target.innerHTML;
             roadData.setMap(null);
             filters = $.extend({}, initialFilters);
             getMapJSON(roadDataUrl + selectedYear + '.json').then(function(json) {
