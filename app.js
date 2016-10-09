@@ -145,7 +145,6 @@ var app = (function() {
     }
 
     return {
-        init: init,
-        setDisplayProperty: setDisplayProperty
+        init: init
     };
 })();
