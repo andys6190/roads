@@ -106,6 +106,9 @@
     .income7 > .key {
       background-color: #013036;
     }
+    .disclaimer {
+      font-size: 11px;
+    }
 
  html, body {
                 height: 100%;
