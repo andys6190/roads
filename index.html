@@ -4,11 +4,13 @@
   <title>Bootstrap </title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="indexstyle.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCM6tj7ueoIAupba0D-8aTrukUjwEBzqhQ&callback=initMap"
   async defer></script>
+
   <style>
     .container {
      margin-bottom: 0px;
@@ -45,14 +47,71 @@
       stroke-width:4;
       fill:black;
     }
+
+    .foo {
+      float: left;
+      width: 10px;
+      height: 10px;
+      margin: 5px;
+      border: 1px solid rgba(0, 0, 0, .2);
+    }
+
+    .red {
+      background: #FF0000;
+    }
+
+    .orange {
+      background: #ff9900 ;
+    }
+
+    .yellow {
+      background: #FFFF00 ;
+    }
+
+    .lgreen {
+      background: #ccff00 ;
+    }
+
+    .dgreen {
+      background: #33ff00;
+    }
+
+
+    
   </style>
   <script>
-    var map;
-    function initMap() {
-      map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 14,
-        center: {lat: 43.079709181516954,  lng:  -76.139201824620429}
-      });
+
+
+   $(document).ready(function(){
+    $('.yearselect').click(function(){
+      alert(this.getElementsByTagName("a")[0].innerHTML);
+    });
+  });
+
+   $(document).ready(function(){
+    $('.crackselect').click(function(){
+      alert(this.getElementsByTagName("a")[0].innerHTML);
+    });
+  });
+
+   $(document).ready(function(){
+    $('.qualityselect').click(function(){
+      alert(this.getElementsByTagName("a")[0].innerHTML);
+    });
+  });
+
+   $(document).ready(function(){
+    $('.classselect').click(function(){
+      alert(this.getElementsByTagName("a")[0].innerHTML);
+    });
+  });
+
+   var map;
+   function initMap() {
+    map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 14,
+      center: {lat: 43.079709181516954,  lng:  -76.139201824620429}
+    });
   // NOTE: This uses cross-domain XHR, and may not work on older browsers.
   var incomeData = 'https://andys6190.github.io/roads/syracuse_census_tracts_with_poverty_data.geojson'; 
   var roadData = 'https://andys6190.github.io/roads/geotest.geojson' ; 
@@ -72,10 +131,12 @@ map.data.setStyle(featureStyle);
 
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
+
   <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
@@ -88,6 +149,7 @@ map.data.setStyle(featureStyle);
             <li><a href="#section1">Section 1</a></li>
             <li><a href="#section2">Section 2</a></li>
             <li><a href="#section3">Section 3</a></li>
+            <li><a href="#section4">Section 4</a></li>
           </ul>
         </div>
       </div>
@@ -100,76 +162,149 @@ map.data.setStyle(featureStyle);
     <p style="color:white;">Words here!</p>
   </div>
 
- <div id="section1" class="container" style="background-color: #F2F2F2;" >
+  <div id="section1" class="container" style="background-color: #F2F2F2;" >
 
    <center>
      <h1>
-       Main Map Here!
-     </h1>
-   </center>
-
-  <div style="z-index:20;"id="map"></div>
-  <br><br>
-</div>
-  
-  <div id="section2" class="container" style="height:500px; background-color: white;">
-   <center>
-     <h1>
-      Description
-     </h1>
-   </center>
- </div>
+       Main Map Here! </h1> </center>
 
 
- <div  id="section3" class="container" style="height:500px; background-color:#C0D890;">
-   <center>
-     <h1 style="color:white;">
-       About
-     </h1>
+       <div class="dropdown"; style ="float:left;" >
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" ">Year
+          <span class="caret"></span></button>
+          <ul class="dropdown-menu">
+            <li class="yearselect"><a>15</a></li>
+            <li class="yearselect"><a>14</a></li>
+            <li class="yearselect"><a>13</a></li>
+          </ul>
+
+        </div>
 
 
-   </center>
+        <div class="dropdown"; style ="float:left; margin-left:10px;"  >
+          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" "> Cracks
+            <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+              <li class="crackselect"><a>Good</a></li>
+              <li class="crackselect"><a>Decent</a></li>
+              <li class="crackselect"><a>Okay</a></li>
+              <li class="crackselect"><a>Danger</a></li>
+              <li class="crackselect"><a>Don't Drive</a></li>
+            </ul>
+          </div>
 
- </div>
-<div  id="section4" class="container" style="background-color: #F2F2F2;" >
-  <div class="row">
-    <center><h1>The Team</h1></center>
-    <div class="col-sm-3">
-      <center>
+          <div class="dropdown"; style ="float:left; margin-left:10px;"  >
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" "> Quality
+              <span class="caret"></span></button>
+              <ul class="dropdown-menu">
+               <li class="qualityselect"><a>10</a></li>
+               <li class="qualityselect"><a>9</a></li>
+               <li class="qualityselect"><a>8</a></li>
+               <li class="qualityselect"><a>7</a></li>
+               <li class="qualityselect"><a>6</a></li>
+               <li class="qualityselect"><a>5</a></li>
+               <li class="qualityselect"><a>4</a></li>
+               <li class="qualityselect"><a>3</a></li>
+               <li class="qualityselect"><a>2</a></li>
+               <li class="qualityselect"><a>1</a></li>
+             </ul>
+           </div>
 
-        <img src="Placeholder.png" height ="175px" width="175px" style="margin-top: 15px;">
-        <h3> Person 1 </h3>
+           <div class="dropdown"; style ="float:left; margin-left:10px;"  >
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" "> Class
+              <span class="caret"></span></button>
+              <ul class="dropdown-menu">
+                <li class="classselect"><a>Local</a></li>
+                <li class="classselect"><a>Collector</a></li>
+                <li class="classselect"><a>Principal Arterial</a></li>
+                <li class="classselect"><a>Minor Arterial </a></li>
 
-      </center>
+              </ul>
 
-    </div>
-    <div class="col-sm-3"> 
-      <center>
-        <img src="Placeholder.png" height ="175px" width="175px" style="margin-top: 15px;">
-        <h3> Person 2 </h3>
-      </center>
+            </div>
+            <div style ="float:right; margin-right:10px;">
+            <div class="foo red"> </div> Terrible </div>
 
-    </div>
-    <div class="col-sm-3"> 
-      <center>
-        <img src="Placeholder.png" height ="175px" width="175px" style="margin-top: 15px;">
-        <h3> Person 3 </h3>
-      </center>
-    </div>
-    <div class="col-sm-3"> 
-      <center>
-        <img src="Placeholder.png" height ="175px" width="175px" style="margin-top: 15px;">
-        <h3> Person 4 </h3>
-      </center>
-    </div>
-    <br><br>
-  </div>
-  <br><br>
-</div>
+            <div style ="float:right; margin-right:10px;">
+            <div class="foo orange"> </div> Bad </div>
+
+            <div style ="float:right; margin-right:10px;">
+            <div class="foo yellow"> </div> Average </div>
+
+            <div style ="float:right; margin-right:10px;">
+            <div class="foo lgreen"> </div> Good </div>
+
+            <div style ="float:right; margin-right:10px;">
+            <div class="foo dgreen"> </div> Great </div>
 
 
+            <br>
+            <br>
 
-</body>
 
-</html>
+            <div style="z-index:20;"id="map">
+            </div>
+          </div>
+
+          <div id="section2" class="container" style="height:500px; background-color: white;">
+           <center>
+             <h1>
+              Description
+            </h1>
+          </center>
+        </div>
+
+
+        <div  id="section3" class="container" style="height:500px; background-color:#C0D890;">
+         <center>
+           <h1 style="color:white;">
+             About
+           </h1>
+
+
+         </center>
+
+       </div>
+
+       <div  id="section4" class="container" style="background-color: #F2F2F2;" >
+        <div class="row">
+          <center><h1>The Team</h1></center>
+          <div class="col-sm-3">
+            <center>
+
+              <img src="Placeholder.png" height ="175px" width="175px" style="margin-top: 15px;">
+              <h3> Person 1 </h3>
+
+            </center>
+
+          </div>
+          <div class="col-sm-3"> 
+            <center>
+              <img src="Placeholder.png" height ="175px" width="175px" style="margin-top: 15px;">
+              <h3> Person 2 </h3>
+            </center>
+
+          </div>
+          <div class="col-sm-3"> 
+            <center>
+              <img src="Placeholder.png" height ="175px" width="175px" style="margin-top: 15px;">
+              <h3> Person 3 </h3>
+            </center>
+          </div>
+          <div class="col-sm-3"> 
+            <center>
+              <img src="Placeholder.png" height ="175px" width="175px" style="margin-top: 15px;">
+              <h3> Person 4 </h3>
+            </center>
+          </div>
+          <br><br>
+        </div>
+        <br><br>
+      </div>
+
+
+
+    </body>
+
+    </html>
 
