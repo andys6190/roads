@@ -1,7 +1,7 @@
 var app = (function() {
     var map = null;
     var mapData = null;
-    var colors = [
+    var roadColors = [
         '#FF0000',
         '#FF3300',
         '#ff6600',
@@ -13,6 +13,17 @@ var app = (function() {
         '#66ff00',
         '#33ff00'
     ];
+    var incomeColors = [
+      '#ededed',
+      '#ccc',
+      '#999',
+      '#666',
+      '#444',
+      '#222',
+      '#000'
+    ]
+    var incomeData = 'https://andys6190.github.io/roads/syracuse_census_tracts_with_poverty_data.geojson';
+    var roadData = 'https://andys6190.github.io/roads/json/MergedRoadRatings';
     var filters = {
         year: 2015,
         property: 'overall'
@@ -23,20 +34,53 @@ var app = (function() {
             zoom: 14,
             center: {lat: 43.079709181516954,  lng:  -76.139201824620429}
         });
-
-        fetch('https://andys6190.github.io/roads/json/MergedRoadRatings2015.json').then(function(ret) {
-            return ret.json();
-        }).then(function(json) {
-            mapData = json;
-            map.data.addGeoJson(mapData);
-            setDisplayProperty('overall');
-        });
+        setMapJSON(incomeData);
+        setMapJSON(roadData + filters.year + '.json');
     }
+    function setMapJSON(source) {
+      fetch(source).then(function(ret) {
+        return ret.json();
+      }).then(function(json) {
+        mapData = json;
+        map.data.addGeoJson(mapData);
+        setDisplayProperty(filters.property);
+      });
 
+    }
     function setDisplayProperty(property) {
         map.data.setStyle(function(feature) {
+          console.log("income data : " + feature.getProperty('percent_in_poverty'));
             if (feature.getProperty('percent_in_poverty')) {
-                return;
+                var p = feature.getProperty('percent_poverty');
+                var i;
+                switch (true) {
+                  case (p < 0.15):
+                    i = 0;
+                    break;
+                  case (p < 0.3):
+                    i = 1;
+                    break;
+                  case (p < 0.4):
+                    i = 1;
+                    break;
+                  case (p < 0.5):
+                    i = 1;
+                    break;
+                  case (p < 0.6):
+                    i = 1;
+                    break;
+                  case (p < 0.7):
+                    i = 1;
+                    break;
+                  default:
+                    i = 6;
+                }
+                return {
+                  fillColor: incomeColors[i],
+                  fillOpacity: 0.75,
+                  strokeColor: '#555',
+                  strokeWeight: 2
+                };
             }
 
             var relevantProperty = feature.getProperty(property);
@@ -50,9 +94,9 @@ var app = (function() {
             relevantProperty--;
 
             return {
-                fillColor: colors[relevantProperty],
-                strokeColor: colors[relevantProperty],
-                strokeWeight: 4
+                //fillColor: roadColors[relevantProperty],
+                strokeColor: roadColors[relevantProperty],
+                strokeWeight: 3
             };
         });
     }
