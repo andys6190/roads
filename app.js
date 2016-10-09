@@ -95,7 +95,7 @@ var app = (function() {
                 }
                 return {
                   fillColor: incomeColors[i],
-                  fillOpacity: 0.75,
+                  fillOpacity: 0.6,
                   strokeColor: '#555',
                   strokeWeight: 1
                 };
@@ -112,6 +112,7 @@ var app = (function() {
             relevantProperty--;
 
             return {
+                fillColor: roadColors[relevantProperty],
                 strokeColor: roadColors[relevantProperty],
                 strokeWeight: 3
             };
