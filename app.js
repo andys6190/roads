@@ -25,11 +25,12 @@ var app = (function() {
     ]
     var incomeDataUrl = 'https://andys6190.github.io/roads/json/syracuse_census_tracts_with_poverty_data.geojson';
     var roadDataUrl = 'https://andys6190.github.io/roads/json/MergedRoadRatings';
-    var filters = {
-        year: 2015,
+    var selectedYear = 2015;
+    var initialFilters = {
         quality: [1, 2, 3, 4, 5],
         roadType: 'all'
     };
+    var filters = $.extend({}, initialFilters);
 
     function init() {
         map =  new google.maps.Map(document.getElementById('map'), {
@@ -42,7 +43,7 @@ var app = (function() {
             incomeData.addGeoJson(json);
             setIncomeDisplay();
         });
-        getMapJSON(roadDataUrl + filters.year + '.json').then(function(json) {
+        getMapJSON(roadDataUrl + selectedYear + '.json').then(function(json) {
             roadData = new google.maps.Data();
             roadData.addGeoJson(json);
             setRoadDisplay();
@@ -54,19 +55,15 @@ var app = (function() {
         $('.yearselect').click(function(e){
             var year = e.target.value;
             roadData.setMap(null);
-            getMapJSON(roadDataUrl + filters.year + '.json').then(function(json) {
+            filters = $.extend({}, initialFilters);
+            getMapJSON(roadDataUrl + selectedYear + '.json').then(function(json) {
                 roadData = new google.maps.Data();
                 roadData.addGeoJson(json);
                 setRoadDisplay();
             });
         });
-        $('.crackselect').click(function(){
-            updateFilters();
-        });
-        $('.qualityselect').click(function(){
-            updateFilters();
-        });
-        $('.classselect').click(function(){
+        $(document).on('filtersUpdated', function(newFilters){
+            filters = newFilters;
             updateFilters();
         });
     }
