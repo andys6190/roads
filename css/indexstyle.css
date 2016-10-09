@@ -18,6 +18,17 @@
       border-radius: 3px;
       padding: 5px;
     }
+    #section2 {
+      position: fixed;
+      bottom:0;
+      left:150px;
+      width:400px;
+      z-index: 100;
+      background-color: #fefefe;
+      border-radius: 3px 3px 0 0;
+      border: 1px solid #ccc;
+      border-bottom: none;
+    }
     h1, h3 {
       margin: 5px 0;
     }
