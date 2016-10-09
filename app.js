@@ -1,10 +1,17 @@
 var app = (function() {
     var map = null;
+    var incomeData = null;
+    var roadData = null;
     var roadColors = [
         '#FF0000',
+        '#FF0000',
+        '#ff9900',
         '#ff9900',
         '#FFFF00',
+        '#FFFF00',
         '#ccff00',
+        '#ccff00',
+        '#33ff00',
         '#33ff00'
     ];
     var incomeColors = [
@@ -16,8 +23,8 @@ var app = (function() {
       '#126770',
       '#013036'
     ]
-    var incomeData = 'https://andys6190.github.io/roads/json/syracuse_census_tracts_with_poverty_data.geojson';
-    var roadData = 'https://andys6190.github.io/roads/json/MergedRoadRatings';
+    var incomeDataUrl = 'https://andys6190.github.io/roads/json/syracuse_census_tracts_with_poverty_data.geojson';
+    var roadDataUrl = 'https://andys6190.github.io/roads/json/MergedRoadRatings';
     var filters = {
         year: 2015,
         quality: [1, 2, 3, 4, 5],
@@ -30,39 +37,53 @@ var app = (function() {
             minZoom: 12,
             center: {lat: 43.0481,  lng:  -76.1474}
         });
-        setMapJSON(incomeData);
-        setMapJSON(roadData + filters.year + '.json');
+        getMapJSON(incomeDataUrl).then(function(json) {
+            incomeData = new google.maps.Data();
+            incomeData.addGeoJson(json);
+            setIncomeDisplay();
+        });
+        getMapJSON(roadDataUrl + filters.year + '.json').then(function(json) {
+            roadData = new google.maps.Data();
+            roadData.addGeoJson(json);
+            setRoadDisplay();
+        });
         bind();
     }
 
     function bind() {
         $('.yearselect').click(function(e){
-            console.log(e);
-            alert(this.getElementsByTagName("a")[0].innerHTML);
+            var year = e.target.value;
+            roadData.setMap(null);
+            getMapJSON(roadDataUrl + filters.year + '.json').then(function(json) {
+                roadData = new google.maps.Data();
+                roadData.addGeoJson(json);
+                setRoadDisplay();
+            });
         });
         $('.crackselect').click(function(){
-            alert(this.getElementsByTagName("a")[0].innerHTML);
+            updateFilters();
         });
         $('.qualityselect').click(function(){
-            alert(this.getElementsByTagName("a")[0].innerHTML);
+            updateFilters();
         });
         $('.classselect').click(function(){
-            alert(this.getElementsByTagName("a")[0].innerHTML);
+            updateFilters();
         });
     }
 
-    function setMapJSON(source) {
-      fetch(source).then(function(ret) {
-        return ret.json();
-      }).then(function(json) {
-        map.data.addGeoJson(json);
-        setInitialDisplay()
+    function getMapJSON(source) {
+        return new Promise(function(resolve, reject) {
+            fetch(source).then(function(ret) {
+                return ret.json();
+            }).then(function(json) {
+                resolve(json);
+                resolve();
+            });
       });
-
     }
 
     function updateFilters() {
-        map.data.setStyle(function(feature) {
+        roadData.setStyle(function(feature) {
             if (feature.getProperty('percent_in_poverty')) {
                 return;
             }
@@ -83,44 +104,22 @@ var app = (function() {
                 };
             }
 
+            var roadType = feature.getProperty('class');
+
+            if (filters.roadType !== 'all' && filters.roadType !== roadType) {
+                return {
+                    strokeWeight: 0
+                };
+            }
+
             return;
         });
     }
 
-    function setInitialDisplay() {
-        map.data.setStyle(function(feature) {
-          //console.log("income data : " + feature.getProperty('percent_in_poverty'));
+    function setRoadDisplay() {
+        roadData.setStyle(function(feature) {
             if (feature.getProperty('percent_in_poverty')) {
-                var p = feature.getProperty('percent_poverty');
-                var i;
-                switch (true) {
-                  case (p < 0.15):
-                    i = 0;
-                    break;
-                  case (p < 0.3):
-                    i = 1;
-                    break;
-                  case (p < 0.4):
-                    i = 2;
-                    break;
-                  case (p < 0.5):
-                    i = 3;
-                    break;
-                  case (p < 0.6):
-                    i = 4;
-                    break;
-                  case (p < 0.7):
-                    i = 5;
-                    break;
-                  default:
-                    i = 6;
-                }
-                return {
-                  fillColor: incomeColors[i],
-                  fillOpacity: 0.6,
-                  strokeColor: '#555',
-                  strokeWeight: 1
-                };
+                return;
             }
 
             var relevantProperty = feature.getProperty('overall');
@@ -139,6 +138,50 @@ var app = (function() {
                 strokeWeight: 2
             };
         });
+
+        roadData.setMap(map);
+    }
+
+    function setIncomeDisplay() {
+        incomeData.setStyle(function(feature) {
+            if (!feature.getProperty('percent_in_poverty')) {
+                return;
+            }
+
+            var p = feature.getProperty('percent_poverty');
+            var i;
+            switch (true) {
+              case (p < 0.15):
+                i = 0;
+                break;
+              case (p < 0.3):
+                i = 1;
+                break;
+              case (p < 0.4):
+                i = 2;
+                break;
+              case (p < 0.5):
+                i = 3;
+                break;
+              case (p < 0.6):
+                i = 4;
+                break;
+              case (p < 0.7):
+                i = 5;
+                break;
+              default:
+                i = 6;
+            }
+
+            return {
+              fillColor: incomeColors[i],
+              fillOpacity: 0.75,
+              strokeColor: '#555',
+              strokeWeight: 1
+            };
+        });
+
+        incomeData.setMap(map);
     }
 
     return {

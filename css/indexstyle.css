@@ -4,7 +4,7 @@
      width:100%;"
    }
 
-    #section1 {height:900px; background-color: #F2F2F2;}
+    #section1 {height:700px; background-color: #F2F2F2;}
     #section2 {padding-top:50px;height:500px;background-color: #F2F2F2;}
     #section3 {padding-top:50px;height:500px;}
     #section4 {padding-top:50px;height:500px;}
@@ -79,33 +79,6 @@
     .income7 > .key {
       background-color: #013036;
     }
-    /*.foo {
-      float: left;
-      width: 10px;
-      height: 10px;
-      margin: 5px;
-      border: 1px solid rgba(0, 0, 0, .2);
-    }*/
-
-    /*.red {
-      background: #FF0000;
-    }
-
-    .orange {
-      background: #ff9900 ;
-    }
-
-    .yellow {
-      background: #FFFF00 ;
-    }
-
-    .lgreen {
-      background: #ccff00 ;
-    }
-
-    .dgreen {
-      background: #33ff00;
-    }*/
 
  html, body {
                 height: 100%;
@@ -113,7 +86,7 @@
                 padding: 0;
             }
             #map {
-                height: 90%;
+                height: 80%;
                 width:90%;
             }
             .testClass{
