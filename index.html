@@ -10,43 +10,8 @@
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
 
-  <nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">Team Name</a>
-      </div>
-      <div>
-        <div class="collapse navbar-collapse" id="myNavbar">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#section1">Section 1</a></li>
-            <li><a href="#section2">Section 2</a></li>
-            <li><a href="#section3">Section 3</a></li>
-            <li><a href="#section4">Section 4</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </nav>
-
-  <div class="bg"></div>
-  <!-- <div class="jumbotron text-center" style="margin-bottom:0px;">
-    <h1 style="color:white; margin-top: 100px;">Generic Bootstrap Page</h1>
-    <p style="color:white;">Words here!</p>
-  </div> -->
-
-  <div id="section1" class="container" style="background-color: #F2F2F2;" >
-
-   <center>
-     <h1>
-       Main Map Here! </h1> </center>
-
-
+  <div id="section1" class="container">
+    <h1>Syracuse Road Quality + Poverty Info </h1>
        <div class="dropdown"; style ="float:left;" >
         <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" ">Year
           <span class="caret"></span></button>
@@ -100,6 +65,28 @@
               </ul>
 
             </div>
+            <div class="map-keys">
+              <h3>Road Quality:</h3>
+              <ol>
+                <li class="red"><div class="key"> </div> Good</li>
+                <li class="orange"><div class="key"></div> Decent</li>
+                <li class="yellow"><div class="key"></div> Okay</li>
+                <li class="lgreen"><div class="key"></div> Danger</li>
+                <li class="dgreen"><div class="key"></div> Don't Drive</li>
+              </ol>
+              <hr>
+              <h3>Percentage in Poverty:</h3>
+              <ol>
+                <li class="income1"><div class="key"> </div> Poverty Below 15%</li>
+                <li class="income2"><div class="key"></div> Poverty Greater Than 15%</li>
+                <li class="income3"><div class="key"></div> Poverty Greater Than 30%</li>
+                <li class="income4"><div class="key"></div> Poverty Greater Than 40%</li>
+                <li class="income5"><div class="key"></div> Poverty Greater Than 50%</li>
+                <li class="income6"><div class="key"></div> Poverty Greater Than 60%</li>
+                <li class="income7"><div class="key"></div> Poverty Greater Than 70%</li>
+              </ol>
+            </div>
+<!--
             <div style ="float:right; margin-right:10px;">
             <div class="foo red"> </div> Terrible </div>
 
@@ -113,36 +100,23 @@
             <div class="foo lgreen"> </div> Good </div>
 
             <div style ="float:right; margin-right:10px;">
-            <div class="foo dgreen"> </div> Great </div>
+            <div class="foo dgreen"> </div> Great </div> -->
 
 
-            <br>
-            <br>
+            <!-- <br>
+            <br> -->
 
 
             <div style="z-index:20;"id="map">
             </div>
           </div>
 
-          <div id="section2" class="container" style="height:500px; background-color: white;">
-           <center>
+          <div id="section2" class="container">
              <h1>
               Description
             </h1>
-          </center>
         </div>
 
-
-        <div  id="section3" class="container" style="height:500px; background-color:#C0D890;">
-         <center>
-           <h1 style="color:white;">
-             About
-           </h1>
-
-
-         </center>
-
-       </div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCM6tj7ueoIAupba0D-8aTrukUjwEBzqhQ&callback=app.init"
