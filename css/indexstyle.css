@@ -3,30 +3,15 @@
      margin-bottom: 0px;
      width:100%;"
    }
-   .jumbotron {
 
-     height: 400px;
-     color: white;
-     text-shadow: #444 0 1px 1px;
-     background:transparent;}
-     .bg {
-      background: url('roads.jpeg') no-repeat center center;
-      position: fixed;
-      width: 110%;
-      height: 500px; 
-      top:0;
-      left:0;
-      z-index: -1;
-      
-    }
-
-    #section1 {padding-top:50px;height:700px;}
-    #section2 {padding-top:50px;height:500px;}
+    #section1 {height:700px; background-color: #F2F2F2;}
+    #section2 {padding-top:50px;height:500px;background-color: #F2F2F2;}
     #section3 {padding-top:50px;height:500px;}
     #section4 {padding-top:50px;height:500px;}
 
-    #map {
-      height: 80%;
+    h1 {
+      margin-bottom:15px;
+      margin-top:20px;
     }
 
     .testClass{
@@ -34,33 +19,65 @@
       stroke-width:4;
       fill:black;
     }
-
-    .foo {
-      float: left;
-      width: 10px;
-      height: 10px;
-      margin: 5px;
-      border: 1px solid rgba(0, 0, 0, .2);
+    .map-keys {
+      width:9%;
+      float: right;
+    }
+    .map-keys h3 {
+      font-size:14px;
+    }
+    .map-keys ol {
+      list-style: none;
+      padding-left:0;
+    }
+    .map-keys li {
+      line-height: 15px;
+      font-size:12px;
+    }
+    .map-keys li .key {
+      width:10px;
+      height:10px;
+      float:left;
+      margin-right:8px;
+      vertical-align: center;
+      border: 1px solid #ccc;
+    }
+    .red > .key {
+      background-color: #FF0000;
+    }
+    .orange > .key {
+      background-color:#ff9900;
+    }
+    .yellow > .key {
+      background-color: #FFFF00;
+    }
+    .lgreen > .key {
+      background-color: #ccff00 ;
+    }
+    .dgreen > .key {
+      background-color: #33ff00;
     }
 
-    .red {
-      background: #FF0000;
+    .income1 > .key {
+      background-color: #E1F7FA;
     }
-
-    .orange {
-      background: #ff9900 ;
+    .income2 > .key {
+      background-color:#BCF1F7;
     }
-
-    .yellow {
-      background: #FFFF00 ;
+    .income3 > .key {
+      background-color: #99E9F2;
     }
-
-    .lgreen {
-      background: #ccff00 ;
+    .income4 > .key {
+      background-color: #74D8E3 ;
     }
-
-    .dgreen {
-      background: #33ff00;
+    .income5 > .key {
+      background-color: #3CA0AB;
+    }
+    .income6 > .key {
+      background-color: #126770;
+    }
+    .income7 > .key {
+      background-color: #013036;
     }
 
  html, body {
@@ -69,16 +86,16 @@
                 padding: 0;
             }
             #map {
-                height: 90%;
-                width: 90%;
+                height: 80%;
+                width:90%;
             }
             .testClass{
                 stroke:black;
                 stroke-width:4;
                 fill:black;
             }
-            .red {
+            /*.red {
                 stroke:black;
                 stroke-width:4;
                 fill:red;
-            }
+            }*/

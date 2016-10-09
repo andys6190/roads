@@ -1,0 +1,84 @@
+
+    .container {
+     margin-bottom: 0px;
+     width:100%;"
+   }
+   .jumbotron {
+
+     height: 400px;
+     color: white;
+     text-shadow: #444 0 1px 1px;
+     background:transparent;}
+     .bg {
+      background: url('roads.jpeg') no-repeat center center;
+      position: fixed;
+      width: 110%;
+      height: 500px; 
+      top:0;
+      left:0;
+      z-index: -1;
+      
+    }
+
+    #section1 {padding-top:50px;height:700px;}
+    #section2 {padding-top:50px;height:500px;}
+    #section3 {padding-top:50px;height:500px;}
+    #section4 {padding-top:50px;height:500px;}
+
+    #map {
+      height: 80%;
+    }
+
+    .testClass{
+      stroke:black;
+      stroke-width:4;
+      fill:black;
+    }
+
+    .foo {
+      float: left;
+      width: 10px;
+      height: 10px;
+      margin: 5px;
+      border: 1px solid rgba(0, 0, 0, .2);
+    }
+
+    .red {
+      background: #FF0000;
+    }
+
+    .orange {
+      background: #ff9900 ;
+    }
+
+    .yellow {
+      background: #FFFF00 ;
+    }
+
+    .lgreen {
+      background: #ccff00 ;
+    }
+
+    .dgreen {
+      background: #33ff00;
+    }
+
+ html, body {
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            #map {
+                height: 100%;
+                width: 100%;
+            }
+            .testClass{
+                stroke:black;
+                stroke-width:4;
+                fill:black;
+            }
+            .red {
+                stroke:black;
+                stroke-width:4;
+                fill:red;
+            }
