@@ -14,13 +14,13 @@ var app = (function() {
         '#33ff00'
     ];
     var incomeColors = [
-      '#ededed',
-      '#ccc',
-      '#999',
-      '#666',
-      '#444',
-      '#222',
-      '#000'
+      '#ddd',
+      '#ffcc00',
+      '#ff9900',
+      '#ff6600',
+      '#ff2900',
+      '#d6301d',
+      '#b81609'
     ]
     var incomeData = 'https://andys6190.github.io/roads/json/syracuse_census_tracts_with_poverty_data.geojson';
     var roadData = 'https://andys6190.github.io/roads/json/MergedRoadRatings';
@@ -79,16 +79,16 @@ var app = (function() {
                     i = 1;
                     break;
                   case (p < 0.4):
-                    i = 1;
+                    i = 2;
                     break;
                   case (p < 0.5):
-                    i = 1;
+                    i = 3;
                     break;
                   case (p < 0.6):
-                    i = 1;
+                    i = 4;
                     break;
                   case (p < 0.7):
-                    i = 1;
+                    i = 5;
                     break;
                   default:
                     i = 6;
