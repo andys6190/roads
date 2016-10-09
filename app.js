@@ -22,11 +22,12 @@ var app = (function() {
       '#222',
       '#000'
     ]
-    var incomeData = 'https://andys6190.github.io/roads/syracuse_census_tracts_with_poverty_data.geojson';
+    var incomeData = 'https://andys6190.github.io/roads/json/syracuse_census_tracts_with_poverty_data.geojson';
     var roadData = 'https://andys6190.github.io/roads/json/MergedRoadRatings';
     var filters = {
         year: 2015,
-        property: 'overall'
+        quality: [1, 2, 3, 4, 5],
+        roadType: 'all'
     };
 
     function init() {
@@ -37,6 +38,23 @@ var app = (function() {
         setMapJSON(incomeData);
         setMapJSON(roadData + filters.year + '.json');
     }
+
+    function bind() {
+        $('.yearselect').click(function(e){
+            console.log(e);
+            alert(this.getElementsByTagName("a")[0].innerHTML);
+        });
+        $('.crackselect').click(function(){
+            alert(this.getElementsByTagName("a")[0].innerHTML);
+        });
+        $('.qualityselect').click(function(){
+            alert(this.getElementsByTagName("a")[0].innerHTML);
+        });
+        $('.classselect').click(function(){
+            alert(this.getElementsByTagName("a")[0].innerHTML);
+        });
+    }
+
     function setMapJSON(source) {
       fetch(source).then(function(ret) {
         return ret.json();
@@ -94,7 +112,6 @@ var app = (function() {
             relevantProperty--;
 
             return {
-                //fillColor: roadColors[relevantProperty],
                 strokeColor: roadColors[relevantProperty],
                 strokeWeight: 3
             };
