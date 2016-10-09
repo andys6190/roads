@@ -53,9 +53,11 @@ var app = (function() {
     function bind() {
         $('.yearselect').click(function(e){
             var year = e.target.value;
-            map.data.remove(roadData);
-            getMapJSON(roadDataUrl + filters.year + '.json').then(function() {
-                setRoadsDisplay();
+            roadData.setMap(null);
+            getMapJSON(roadDataUrl + filters.year + '.json').then(function(json) {
+                roadData = new google.maps.Data();
+                roadData.addGeoJson(json);
+                setRoadDisplay();
             });
         });
         $('.crackselect').click(function(){
