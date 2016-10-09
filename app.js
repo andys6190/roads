@@ -62,8 +62,12 @@ var app = (function() {
                 setRoadDisplay();
             });
         });
-        $(document).on('filtersUpdated', function(newFilters){
-            filters = newFilters;
+        $(document).on('classUpdated', function(e, roadType){
+            filters.roadType = roadType;
+            updateFilters();
+        });
+        $(document).on('qualityUpdated', function(e, quality){
+            filters.quality = quality;
             updateFilters();
         });
     }
@@ -93,7 +97,7 @@ var app = (function() {
                 };
             }
 
-            overall = Math.floor(relevantProperty / 2);
+            overall = Math.floor(overall / 2);
 
             if (filters.quality.indexOf(overall) === -1) {
                 return {

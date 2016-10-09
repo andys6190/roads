@@ -45,9 +45,9 @@
    <select class="selectpicker qualityselect" data-title="Quality"  data-selected-text-format="static" multiple>
   <option value="5" selected>Great</option>
   <option value="4" selected>Good</option>
-  <option value="3" selected>Average</option>  
-  <option value="2" selected>Bad</option> 
-  <option value="1" selected>Dont drive</option> 
+  <option value="3" selected>Average</option>
+  <option value="2" selected>Bad</option>
+  <option value="1" selected>Dont drive</option>
 </select>
 </div>
 
@@ -99,57 +99,26 @@
         </div>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<<<<<<< HEAD
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCM6tj7ueoIAupba0D-8aTrukUjwEBzqhQ&callback=app.init"
-  async defer></script>
-	
-     <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/css/bootstrap-select.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/js/bootstrap-select.min.js"></script>
-        
-        <script>
-        	$( document ).ready(function() {
-        
-   $('.classselect').click(function(){
-            updateFilter(  this.getElementByTagName("a")[0] );
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCM6tj7ueoIAupba0D-8aTrukUjwEBzqhQ&callback=app.init" async defer></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/css/bootstrap-select.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/js/bootstrap-select.min.js"></script>
+    <script src="app.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('.classselect').click(function(){
+                $(document).trigger('classUpdated', [this.getElementsByTagName("a")[0].innerHTML]);
+            });
+            $('.selectpicker').change(function() {
+                var quality = [];
+                $(':selected').each( function(i, selected) {
+                    quality.push(parseInt(this.value));
+                });
+                $(document).trigger('qualityUpdated', [quality]);
+            });
         });
-        
-        					 
-        					 
-   function updateFilter() {
-	
-		 	var quality = [ ] ; 
-      	  		$(':selected').each( function(i, selected) { 
-        				quality.push(this.value); 
-        			})  ;
-        		
-        	
-        		var thisClass = 	$('.classselect a').text() ; 
-      
-      	  	var retVal = {  "quality":quality, "roadType":thisClass  } ; 
-      	  	console.log(this);
-      	  	$(document).trigger('filtersUpdated', retVal); 
-      	  
-      	  	      	  		
-      	  }
-        			
-        		
-        		
-      	  }); 
-      	  
-      	 
-        </script>
-  
-=======
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCM6tj7ueoIAupba0D-8aTrukUjwEBzqhQ&callback=app.init" async defer></script>
-	<script src="app.js"></script>
-     <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/css/bootstrap-select.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/js/bootstrap-select.min.js"></script>
-
-
->>>>>>> 931faa15ef72cb6364e61d50275c002633055c5a
-    </body>
-
-    </html>
+    </script>
+</body>
+</html>
