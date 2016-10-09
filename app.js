@@ -13,13 +13,13 @@ var app = (function() {
         '#33ff00'
     ];
     var incomeColors = [
-      '#ddd',
-      '#ffcc00',
-      '#ff9900',
-      '#ff6600',
-      '#ff2900',
-      '#d6301d',
-      '#b81609'
+      '#E1F7FA',
+      '#BCF1F7',
+      '#99E9F2',
+      '#74D8E3',
+      '#3CA0AB',
+      '#126770',
+      '#013036'
     ]
     var incomeData = 'https://andys6190.github.io/roads/json/syracuse_census_tracts_with_poverty_data.geojson';
     var roadData = 'https://andys6190.github.io/roads/json/MergedRoadRatings';
@@ -123,7 +123,7 @@ var app = (function() {
                   fillColor: incomeColors[i],
                   fillOpacity: 0.75,
                   strokeColor: '#555',
-                  strokeWeight: 2
+                  strokeWeight: 1
                 };
             }
 
