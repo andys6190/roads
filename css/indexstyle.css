@@ -1,10 +1,10 @@
 
     .container {
      margin-bottom: 0px;
-     width:100%;"
+     width:100%;
    }
 
-    #section1 {height:700px; background-color: #F2F2F2;}
+    #section1 {background-color: #F2F2F2;}
     #section2 {padding-top:50px;height:500px;background-color: #F2F2F2;}
     #section3 {padding-top:50px;height:500px;}
     #section4 {padding-top:50px;height:500px;}

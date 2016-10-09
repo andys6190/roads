@@ -64,11 +64,20 @@ var app = (function() {
         });
         $(document).on('classUpdated', function(e, roadType){
             filters.roadType = roadType;
+            startLoading();
             updateFilters();
         });
         $(document).on('qualityUpdated', function(e, quality){
             filters.quality = quality;
+            startLoading();
             updateFilters();
+        });
+    }
+
+    function startLoading() {
+        $('#loader').css('visibility', 'visibile');
+        google.maps.event.addListener(map, 'idle', function() {
+            $('#loader').css('visibility', 'hidden');
         });
     }
 
@@ -97,8 +106,6 @@ var app = (function() {
                 };
             }
 
-            overall = Math.floor(overall / 2);
-
             if (filters.quality.indexOf(overall) === -1) {
                 return {
                     strokeWeight: 0
@@ -113,7 +120,13 @@ var app = (function() {
                 };
             }
 
-            return;
+            overall--;
+
+            return {
+                fillColor: roadColors[overall],
+                strokeColor: roadColors[overall],
+                strokeWeight: 2
+            };
         });
     }
 
@@ -123,19 +136,19 @@ var app = (function() {
                 return;
             }
 
-            var relevantProperty = feature.getProperty('overall');
+            var overall = feature.getProperty('overall');
 
-            if (!relevantProperty) {
+            if (!overall) {
                 return {
                     strokeWeight: 0
                 };
             }
 
-            relevantProperty--;
+            overall--;
 
             return {
-                fillColor: roadColors[relevantProperty],
-                strokeColor: roadColors[relevantProperty],
+                fillColor: roadColors[overall],
+                strokeColor: roadColors[overall],
                 strokeWeight: 2
             };
         });

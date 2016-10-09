@@ -12,91 +12,83 @@
 
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
+    <div id="section1" class="container">
+        <h1>Syracuse Road Quality + Poverty Info </h1>
 
-
-  <div id="section1" class="container">
-    <h1>Syracuse Road Quality + Poverty Info </h1>
-
-       <div class="dropdown"; style ="float:left;" >
-        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" ">Year
-          <span class="caret"></span></button>
-          <ul class="dropdown-menu">
-            <li class="yearselect"><a>2015</a></li>
-            <li class="yearselect"><a>2014</a></li>
-            <li class="yearselect"><a>2013</a></li>
-            <li class="yearselect"><a>2012</a></li>
-            <li class="yearselect"><a>2011</a></li>
-            <li class="yearselect"><a>2010</a></li>
-            <li class="yearselect"><a>2009</a></li>
-            <li class="yearselect"><a>2008</a></li>
-            <li class="yearselect"><a>2007</a></li>
-            <li class="yearselect"><a>2006</a></li>
-            <li class="yearselect"><a>2005</a></li>
-            <li class="yearselect"><a>2004</a></li>
-            <li class="yearselect"><a>2003</a></li>
-            <li class="yearselect"><a>2002</a></li>
-            <li class="yearselect"><a>2001</a></li>
-            <li class="yearselect"><a>2000</a></li>
-          </ul>
-
+        <div class="dropdown"; style ="float:left;" >
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                Year
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li class="yearselect"><a>2015</a></li>
+                <li class="yearselect"><a>2014</a></li>
+                <li class="yearselect"><a>2013</a></li>
+                <li class="yearselect"><a>2012</a></li>
+                <li class="yearselect"><a>2011</a></li>
+                <li class="yearselect"><a>2010</a></li>
+                <li class="yearselect"><a>2009</a></li>
+                <li class="yearselect"><a>2008</a></li>
+                <li class="yearselect"><a>2007</a></li>
+                <li class="yearselect"><a>2006</a></li>
+                <li class="yearselect"><a>2005</a></li>
+                <li class="yearselect"><a>2004</a></li>
+                <li class="yearselect"><a>2003</a></li>
+                <li class="yearselect"><a>2002</a></li>
+                <li class="yearselect"><a>2001</a></li>
+                <li class="yearselect"><a>2000</a></li>
+            </ul>
         </div>
 
-<div style ="float:left; margin-left:10px;">
-   <select class="selectpicker qualityselect" data-title="Quality"  data-selected-text-format="static" multiple>
-  <option value="5" selected>Great</option>
-  <option value="4" selected>Good</option>
-  <option value="3" selected>Average</option>
-  <option value="2" selected>Bad</option>
-  <option value="1" selected>Dont drive</option>
-</select>
-</div>
-
-
-
-           <div class="dropdown"; style ="float:left; margin-left:10px;"  >
-            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" "> Class
+        <div style ="float:left; margin-left:10px;">
+            <select class="selectpicker qualityselect" data-title="Quality"  data-selected-text-format="static" multiple>
+                <option value="9,10" selected>Great</option>
+                <option value="7,8" selected>Good</option>
+                <option value="5,6" selected>Average</option>
+                <option value="3,4" selected>Bad</option>
+                <option value="1,2" selected>Dont drive</option>
+            </select>
+        </div>
+        <div class="dropdown"; style ="float:left; margin-left:10px;"  >
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Class
               <span class="caret"></span></button>
               <ul class="dropdown-menu">
-                <li class="classselect"><a>Local</a></li>
-                <li class="classselect"><a>Collector</a></li>
-                <li class="classselect"><a>Principal Arterial</a></li>
-                <li class="classselect"><a>Minor Arterial </a></li>
-
+                  <li class="classselect"><a>Local</a></li>
+                  <li class="classselect"><a>Collector</a></li>
+                  <li class="classselect"><a>Principal Arterial</a></li>
+                  <li class="classselect"><a>Minor Arterial </a></li>
               </ul>
-
-            </div>
-            <div class="map-keys">
-              <h3>Road Quality:</h3>
-              <ol>
+        </div>
+        <i id="loader" class="fa fa-spinner fa-pulse fa-3x fa-fw" style="margin-bottom: 10px; visiblity: hidden"></i>
+    </div>
+    <div class="map-keys">
+        <h3>Road Quality:</h3>
+            <ol>
                 <li class="red"><div class="key"> </div>Don't Drive</li>
                 <li class="orange"><div class="key"></div> Danger</li>
                 <li class="yellow"><div class="key"></div> Okay</li>
                 <li class="lgreen"><div class="key"></div> Decent</li>
                 <li class="dgreen"><div class="key"></div> Good</li>
-              </ol>
-              <hr>
-              <h3>Percentage in Poverty:</h3>
-              <ol>
-                <li class="income1"><div class="key"> </div> Poverty Below 15%</li>
-                <li class="income2"><div class="key"></div> Poverty Greater Than 15%</li>
-                <li class="income3"><div class="key"></div> Poverty Greater Than 30%</li>
-                <li class="income4"><div class="key"></div> Poverty Greater Than 40%</li>
-                <li class="income5"><div class="key"></div> Poverty Greater Than 50%</li>
-                <li class="income6"><div class="key"></div> Poverty Greater Than 60%</li>
-                <li class="income7"><div class="key"></div> Poverty Greater Than 70%</li>
-              </ol>
-            </div>
+            </ol>
+            <hr>
+        <h3>Percentage in Poverty:</h3>
+        <ol>
+            <li class="income1"><div class="key"> </div> Poverty Below 15%</li>
+            <li class="income2"><div class="key"></div> Poverty Greater Than 15%</li>
+            <li class="income3"><div class="key"></div> Poverty Greater Than 30%</li>
+            <li class="income4"><div class="key"></div> Poverty Greater Than 40%</li>
+            <li class="income5"><div class="key"></div> Poverty Greater Than 50%</li>
+            <li class="income6"><div class="key"></div> Poverty Greater Than 60%</li>
+            <li class="income7"><div class="key"></div> Poverty Greater Than 70%</li>
+        </ol>
+    </div>
 
-
-            <div style="z-index:20;"id="map">
-            </div>
-          </div>
-
-          <div id="section2" class="container">
-             <h1>
-              Description
-            </h1>
-        </div>
+    <div style="z-index:20;"id="map"></div>
+    <div id="section2" class="container">
+        <h1>
+            Description
+        </h1>
+    </div>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -104,6 +96,7 @@
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/css/bootstrap-select.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/js/bootstrap-select.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"></link>
     <script src="app.js"></script>
 
     <script>
@@ -113,8 +106,10 @@
             });
             $('.selectpicker').change(function() {
                 var quality = [];
-                $(':selected').each( function(i, selected) {
-                    quality.push(parseInt(this.value));
+                $('.selectpicker :selected').each(function(i, selected) {
+                    quality = quality.concat(this.value.split(',').map(function(val) {
+                        return parseInt(val);
+                    }));
                 });
                 $(document).trigger('qualityUpdated', [quality]);
             });
