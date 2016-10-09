@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap </title>
+  <title>Roads</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -50,13 +50,13 @@
             </select>
         </div>
         <div class="dropdown"; style ="float:left; margin-left:10px;"  >
-            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Class
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Road Type
               <span class="caret"></span></button>
               <ul class="dropdown-menu">
-                  <li class="classselect"><a>Local</a></li>
-                  <li class="classselect"><a>Collector</a></li>
-                  <li class="classselect"><a>Principal Arterial</a></li>
-                  <li class="classselect"><a>Minor Arterial </a></li>
+                  <li class="classselect" value="Local"><a>Local</a></li>
+                  <li class="classselect" value="CO"><a>Collector</a></li>
+                  <li class="classselect" value="PA"><a>Principal Arterial</a></li>
+                  <li class="classselect" value="MA"><a>Minor Arterial </a></li>
               </ul>
         </div>
     </div>
@@ -100,7 +100,7 @@
     <script>
         $(document).ready(function() {
             $('.classselect').click(function(){
-                $(document).trigger('classUpdated', [this.getElementsByTagName("a")[0].innerHTML]);
+                $(document).trigger('classUpdated', [this.value]);
             });
             $('.selectpicker').change(function() {
                 var quality = [];
