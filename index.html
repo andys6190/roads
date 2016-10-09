@@ -4,130 +4,9 @@
   <title>Bootstrap </title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="indexstyle.css">
+ 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCM6tj7ueoIAupba0D-8aTrukUjwEBzqhQ&callback=initMap"
-  async defer></script>
-
-  <style>
-    .container {
-     margin-bottom: 0px;
-     width:100%;"
-   }
-   .jumbotron {
-
-     height: 400px;
-     color: white;
-     text-shadow: #444 0 1px 1px;
-     background:transparent;}
-     .bg {
-      background: url('roads.jpeg') no-repeat center center;
-      position: fixed;
-      width: 110%;
-      height: 500px; 
-      top:0;
-      left:0;
-      z-index: -1;
-      
-    }
-
-    #section1 {padding-top:50px;height:700px;}
-    #section2 {padding-top:50px;height:500px;}
-    #section3 {padding-top:50px;height:500px;}
-    #section4 {padding-top:50px;height:500px;}
-
-    #map {
-      height: 80%;
-    }
-
-    .testClass{
-      stroke:black;
-      stroke-width:4;
-      fill:black;
-    }
-
-    .foo {
-      float: left;
-      width: 10px;
-      height: 10px;
-      margin: 5px;
-      border: 1px solid rgba(0, 0, 0, .2);
-    }
-
-    .red {
-      background: #FF0000;
-    }
-
-    .orange {
-      background: #ff9900 ;
-    }
-
-    .yellow {
-      background: #FFFF00 ;
-    }
-
-    .lgreen {
-      background: #ccff00 ;
-    }
-
-    .dgreen {
-      background: #33ff00;
-    }
-
-
-    
-  </style>
-  <script>
-
-
-   $(document).ready(function(){
-    $('.yearselect').click(function(){
-      alert(this.getElementsByTagName("a")[0].innerHTML);
-    });
-  });
-
-   $(document).ready(function(){
-    $('.crackselect').click(function(){
-      alert(this.getElementsByTagName("a")[0].innerHTML);
-    });
-  });
-
-   $(document).ready(function(){
-    $('.qualityselect').click(function(){
-      alert(this.getElementsByTagName("a")[0].innerHTML);
-    });
-  });
-
-   $(document).ready(function(){
-    $('.classselect').click(function(){
-      alert(this.getElementsByTagName("a")[0].innerHTML);
-    });
-  });
-
-   var map;
-   function initMap() {
-    map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 14,
-      center: {lat: 43.079709181516954,  lng:  -76.139201824620429}
-    });
-  // NOTE: This uses cross-domain XHR, and may not work on older browsers.
-  var incomeData = 'https://andys6190.github.io/roads/syracuse_census_tracts_with_poverty_data.geojson'; 
-  var roadData = 'https://andys6190.github.io/roads/geotest.geojson' ; 
-  map.data.loadGeoJson(incomeData);
-//map.data.setGeoJson('https://andys6190.github.io/roads/geotest.geojson');
-//map.data.addGeoJson(mapData);
-var featureStyle = {
-  strokeColor: '#ff3333',
-  strokeWeight: 4
-}
-map.data.setStyle(featureStyle);
-
-}
-
-
-</script>
+  
 
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
@@ -304,6 +183,41 @@ map.data.setStyle(featureStyle);
 
 
 
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCM6tj7ueoIAupba0D-8aTrukUjwEBzqhQ&callback=app.init"
+  async defer></script>
+	<script src="app.js"></script>
+   <link rel="stylesheet" type="text/css" href="css/indexstyle.css">
+  <script>
+   $(document).ready(function(){
+   	
+    $('.yearselect').click(function(){
+      alert(this.getElementsByTagName("a")[0].innerHTML);
+    });
+
+
+  
+    $('.crackselect').click(function(){
+      alert(this.getElementsByTagName("a")[0].innerHTML);
+    });
+  
+
+ 
+    $('.qualityselect').click(function(){
+      alert(this.getElementsByTagName("a")[0].innerHTML);
+    });
+ 
+
+  
+    $('.classselect').click(function(){
+      alert(this.getElementsByTagName("a")[0].innerHTML);
+    });
+    
+  });
+
+ </script>
     </body>
 
     </html>

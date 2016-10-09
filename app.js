@@ -31,7 +31,7 @@ var app = (function() {
 
     function init() {
         map =  new google.maps.Map(document.getElementById('map'), {
-            zoom: 14,
+            zoom: 12,
             center: {lat: 43.079709181516954,  lng:  -76.139201824620429}
         });
         setMapJSON(incomeData);
