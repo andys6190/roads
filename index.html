@@ -26,11 +26,11 @@
       background: url('roads.jpeg') no-repeat center center;
       position: fixed;
       width: 110%;
-      height: 500px; 
+      height: 500px;
       top:0;
       left:0;
       z-index: -1;
-      
+
     }
 
     #section1 {padding-top:50px;height:700px;}
@@ -77,35 +77,25 @@
     }
 
 
-    
+
   </style>
   <script>
 
 
-   $(document).ready(function(){
-    $('.yearselect').click(function(){
-      alert(this.getElementsByTagName("a")[0].innerHTML);
+    $(document).ready(function(){
+        $('.yearselect').click(function(){
+            alert(this.getElementsByTagName("a")[0].innerHTML);
+        });
+        $('.crackselect').click(function(){
+            alert(this.getElementsByTagName("a")[0].innerHTML);
+        });
+        $('.qualityselect').click(function(){
+            alert(this.getElementsByTagName("a")[0].innerHTML);
+        });
+        $('.classselect').click(function(){
+            alert(this.getElementsByTagName("a")[0].innerHTML);
+        });
     });
-  });
-
-   $(document).ready(function(){
-    $('.crackselect').click(function(){
-      alert(this.getElementsByTagName("a")[0].innerHTML);
-    });
-  });
-
-   $(document).ready(function(){
-    $('.qualityselect').click(function(){
-      alert(this.getElementsByTagName("a")[0].innerHTML);
-    });
-  });
-
-   $(document).ready(function(){
-    $('.classselect').click(function(){
-      alert(this.getElementsByTagName("a")[0].innerHTML);
-    });
-  });
-
    var map;
    function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
@@ -113,8 +103,8 @@
       center: {lat: 43.079709181516954,  lng:  -76.139201824620429}
     });
   // NOTE: This uses cross-domain XHR, and may not work on older browsers.
-  var incomeData = 'https://andys6190.github.io/roads/syracuse_census_tracts_with_poverty_data.geojson'; 
-  var roadData = 'https://andys6190.github.io/roads/geotest.geojson' ; 
+  var incomeData = 'https://andys6190.github.io/roads/syracuse_census_tracts_with_poverty_data.geojson';
+  var roadData = 'https://andys6190.github.io/roads/geotest.geojson' ;
   map.data.loadGeoJson(incomeData);
 //map.data.setGeoJson('https://andys6190.github.io/roads/geotest.geojson');
 //map.data.addGeoJson(mapData);
@@ -278,20 +268,20 @@ map.data.setStyle(featureStyle);
             </center>
 
           </div>
-          <div class="col-sm-3"> 
+          <div class="col-sm-3">
             <center>
               <img src="Placeholder.png" height ="175px" width="175px" style="margin-top: 15px;">
               <h3> Person 2 </h3>
             </center>
 
           </div>
-          <div class="col-sm-3"> 
+          <div class="col-sm-3">
             <center>
               <img src="Placeholder.png" height ="175px" width="175px" style="margin-top: 15px;">
               <h3> Person 3 </h3>
             </center>
           </div>
-          <div class="col-sm-3"> 
+          <div class="col-sm-3">
             <center>
               <img src="Placeholder.png" height ="175px" width="175px" style="margin-top: 15px;">
               <h3> Person 4 </h3>
