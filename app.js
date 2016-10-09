@@ -2,14 +2,9 @@ var app = (function() {
     var map = null;
     var roadColors = [
         '#FF0000',
-        '#FF3300',
-        '#ff6600',
         '#ff9900',
-        '#FFCC00',
         '#FFFF00',
         '#ccff00',
-        '#99ff00',
-        '#66ff00',
         '#33ff00'
     ];
     var incomeColors = [
@@ -31,8 +26,9 @@ var app = (function() {
 
     function init() {
         map =  new google.maps.Map(document.getElementById('map'), {
-            zoom: 12,
-            center: {lat: 43.079709181516954,  lng:  -76.139201824620429}
+            zoom: 14,
+            minZoom: 12,
+            center: {lat: 43.0481,  lng:  -76.1474}
         });
         setMapJSON(incomeData);
         setMapJSON(roadData + filters.year + '.json');
@@ -93,7 +89,7 @@ var app = (function() {
 
     function setInitialDisplay() {
         map.data.setStyle(function(feature) {
-          console.log("income data : " + feature.getProperty('percent_in_poverty'));
+          //console.log("income data : " + feature.getProperty('percent_in_poverty'));
             if (feature.getProperty('percent_in_poverty')) {
                 var p = feature.getProperty('percent_poverty');
                 var i;
@@ -140,7 +136,7 @@ var app = (function() {
             return {
                 fillColor: roadColors[relevantProperty],
                 strokeColor: roadColors[relevantProperty],
-                strokeWeight: 3
+                strokeWeight: 2
             };
         });
     }
