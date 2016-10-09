@@ -34,35 +34,42 @@ var app = (function() {
             zoom: 12,
             center: {lat: 43.079709181516954,  lng:  -76.139201824620429}
         });
-        setMapJSON(incomeData);
-        setMapJSON(roadData + filters.year + '.json');
+        setMapJSON(incomeData).then(function() {
+            setIncomeDisplay();
+        });
+        setMapJSON(roadData + filters.year + '.json').then(function() {
+            setRoadsDisplay();
+        });
         bind();
     }
 
     function bind() {
         $('.yearselect').click(function(e){
-            console.log(e);
-            alert(this.getElementsByTagName("a")[0].innerHTML);
+            var year = e.target.value;
+            setMapJSON(roadData + filters.year + '.json').then(function() {
+                setRoadsDisplay();
+            });
         });
         $('.crackselect').click(function(){
-            alert(this.getElementsByTagName("a")[0].innerHTML);
+            updateFilters();
         });
         $('.qualityselect').click(function(){
-            alert(this.getElementsByTagName("a")[0].innerHTML);
+            updateFilters();
         });
         $('.classselect').click(function(){
-            alert(this.getElementsByTagName("a")[0].innerHTML);
+            updateFilters();
         });
     }
 
     function setMapJSON(source) {
-      fetch(source).then(function(ret) {
-        return ret.json();
-      }).then(function(json) {
-        map.data.addGeoJson(json);
-        setInitialDisplay()
+        return new Promise(function(resolve, reject) {
+            fetch(source).then(function(ret) {
+                return ret.json();
+            }).then(function(json) {
+                map.data.addGeoJson(json);
+                resolve();
+            });
       });
-
     }
 
     function updateFilters() {
@@ -87,44 +94,22 @@ var app = (function() {
                 };
             }
 
+            var roadType = feature.getProperty('class');
+
+            if (filters.roadType !== 'all' && filters.roadType !== roadType) {
+                return {
+                    strokeWeight: 0
+                };
+            }
+
             return;
         });
     }
 
-    function setInitialDisplay() {
+    function setRoadsDisplay() {
         map.data.setStyle(function(feature) {
-          console.log("income data : " + feature.getProperty('percent_in_poverty'));
             if (feature.getProperty('percent_in_poverty')) {
-                var p = feature.getProperty('percent_poverty');
-                var i;
-                switch (true) {
-                  case (p < 0.15):
-                    i = 0;
-                    break;
-                  case (p < 0.3):
-                    i = 1;
-                    break;
-                  case (p < 0.4):
-                    i = 2;
-                    break;
-                  case (p < 0.5):
-                    i = 3;
-                    break;
-                  case (p < 0.6):
-                    i = 4;
-                    break;
-                  case (p < 0.7):
-                    i = 5;
-                    break;
-                  default:
-                    i = 6;
-                }
-                return {
-                  fillColor: incomeColors[i],
-                  fillOpacity: 0.75,
-                  strokeColor: '#555',
-                  strokeWeight: 1
-                };
+                return;
             }
 
             var relevantProperty = feature.getProperty('overall');
@@ -140,6 +125,46 @@ var app = (function() {
             return {
                 strokeColor: roadColors[relevantProperty],
                 strokeWeight: 3
+            };
+        });
+    }
+
+    function setDisplay() {
+        map.data.setStyle(function(feature) {
+            if (!feature.getProperty('percent_in_poverty')) {
+                return;
+            }
+
+            var p = feature.getProperty('percent_poverty');
+            var i;
+            switch (true) {
+              case (p < 0.15):
+                i = 0;
+                break;
+              case (p < 0.3):
+                i = 1;
+                break;
+              case (p < 0.4):
+                i = 2;
+                break;
+              case (p < 0.5):
+                i = 3;
+                break;
+              case (p < 0.6):
+                i = 4;
+                break;
+              case (p < 0.7):
+                i = 5;
+                break;
+              default:
+                i = 6;
+            }
+
+            return {
+              fillColor: incomeColors[i],
+              fillOpacity: 0.75,
+              strokeColor: '#555',
+              strokeWeight: 1
             };
         });
     }
