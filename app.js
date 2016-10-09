@@ -1,10 +1,17 @@
 var app = (function() {
     var map = null;
+    var incomeData = null;
+    var roadData = null;
     var roadColors = [
         '#FF0000',
+        '#FF0000',
+        '#ff9900',
         '#ff9900',
         '#FFFF00',
+        '#FFFF00',
         '#ccff00',
+        '#ccff00',
+        '#33ff00',
         '#33ff00'
     ];
     var incomeColors = [
@@ -16,8 +23,8 @@ var app = (function() {
       '#126770',
       '#013036'
     ]
-    var incomeData = 'https://andys6190.github.io/roads/json/syracuse_census_tracts_with_poverty_data.geojson';
-    var roadData = 'https://andys6190.github.io/roads/json/MergedRoadRatings';
+    var incomeDataUrl = 'https://andys6190.github.io/roads/json/syracuse_census_tracts_with_poverty_data.geojson';
+    var roadDataUrl = 'https://andys6190.github.io/roads/json/MergedRoadRatings';
     var filters = {
         year: 2015,
         quality: [1, 2, 3, 4, 5],
@@ -30,11 +37,15 @@ var app = (function() {
             minZoom: 12,
             center: {lat: 43.0481,  lng:  -76.1474}
         });
-        setMapJSON(incomeData).then(function() {
+        getMapJSON(incomeDataUrl).then(function(json) {
+            incomeData = new google.maps.Data();
+            incomeData.addGeoJson(json);
             setIncomeDisplay();
         });
-        setMapJSON(roadData + filters.year + '.json').then(function() {
-            setRoadsDisplay();
+        getMapJSON(roadDataUrl + filters.year + '.json').then(function(json) {
+            roadData = new google.maps.Data();
+            roadData.addGeoJson(json);
+            setRoadDisplay();
         });
         bind();
     }
@@ -42,7 +53,8 @@ var app = (function() {
     function bind() {
         $('.yearselect').click(function(e){
             var year = e.target.value;
-            setMapJSON(roadData + filters.year + '.json').then(function() {
+            map.data.remove(roadData);
+            getMapJSON(roadDataUrl + filters.year + '.json').then(function() {
                 setRoadsDisplay();
             });
         });
@@ -57,19 +69,19 @@ var app = (function() {
         });
     }
 
-    function setMapJSON(source) {
+    function getMapJSON(source) {
         return new Promise(function(resolve, reject) {
             fetch(source).then(function(ret) {
                 return ret.json();
             }).then(function(json) {
-                map.data.addGeoJson(json);
+                resolve(json);
                 resolve();
             });
       });
     }
 
     function updateFilters() {
-        map.data.setStyle(function(feature) {
+        roadData.setStyle(function(feature) {
             if (feature.getProperty('percent_in_poverty')) {
                 return;
             }
@@ -102,8 +114,8 @@ var app = (function() {
         });
     }
 
-    function setRoadsDisplay() {
-        map.data.setStyle(function(feature) {
+    function setRoadDisplay() {
+        roadData.setStyle(function(feature) {
             if (feature.getProperty('percent_in_poverty')) {
                 return;
             }
@@ -124,10 +136,12 @@ var app = (function() {
                 strokeWeight: 2
             };
         });
+
+        roadData.setMap(map);
     }
 
     function setIncomeDisplay() {
-        map.data.setStyle(function(feature) {
+        incomeData.setStyle(function(feature) {
             if (!feature.getProperty('percent_in_poverty')) {
                 return;
             }
@@ -164,6 +178,8 @@ var app = (function() {
               strokeWeight: 1
             };
         });
+
+        incomeData.setMap(map);
     }
 
     return {
